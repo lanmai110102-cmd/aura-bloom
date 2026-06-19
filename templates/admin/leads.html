@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Leads · Admin{% endblock %}
+{% block content %}
+<div class="admin-wrap">
+  <div class="admin-nav">
+    <a href="/admin">Dashboard</a>
+    <a href="/admin/case-studies">Case Studies</a>
+    <a href="/admin/projects">Other Projects</a>
+    <a href="/admin/team">Team</a>
+    <a href="/admin/results">Results</a>
+    <a href="/admin/leads">Leads</a>
+  </div>
+  <div class="admin-card">
+    <h2 style="color:var(--cafe-noir);">Leads từ form liên hệ</h2>
+    <table class="admin-table">
+      <tr><th>Ngày</th><th>Tên</th><th>Email</th><th>Công ty</th><th>Lời nhắn</th></tr>
+      {% for l in items %}
+      <tr>
+        <td>{{ l.created_at.strftime("%d/%m/%Y %H:%M") }}</td>
+        <td>{{ l.name }}</td>
+        <td>{{ l.email }}</td>
+        <td>{{ l.company }}</td>
+        <td>{{ l.message }}</td>
+      </tr>
+      {% endfor %}
+      {% if not items %}
+      <tr><td colspan="5" style="color:var(--muted);">Chưa có lead nào.</td></tr>
+      {% endif %}
+    </table>
+  </div>
+</div>
+{% endblock %}

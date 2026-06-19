@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: aura-bloom
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python3 seed.py && gunicorn app:app"
+    envVars:
+      - key: AURA_SECRET_KEY
+        generateValue: true
+      - key: AURA_ADMIN_PASSWORD
+        sync: false

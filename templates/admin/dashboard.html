@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard · Aura Bloom{% endblock %}
+{% block content %}
+<div class="admin-wrap">
+  <div class="admin-nav">
+    <a href="/admin">Dashboard</a>
+    <a href="/admin/case-studies">Case Studies</a>
+    <a href="/admin/projects">Other Projects</a>
+    <a href="/admin/team">Team</a>
+    <a href="/admin/results">Results</a>
+    <a href="/admin/leads">Leads</a>
+    <a href="/" target="_blank">Xem site →</a>
+    <a href="/admin/logout" style="color:#b85c4a;">Đăng xuất</a>
+  </div>
+  <h2 style="color:var(--cafe-noir);">Tổng quan</h2>
+  <div class="admin-stat-grid">
+    <div class="admin-stat"><b>{{ n_cs }}</b>Case Studies</div>
+    <div class="admin-stat"><b>{{ n_projects }}</b>Other Projects</div>
+    <div class="admin-stat"><b>{{ n_team }}</b>Team Members</div>
+    <div class="admin-stat"><b>{{ n_results }}</b>Result Metrics</div>
+    <div class="admin-stat"><b>{{ n_leads }}</b>Leads</div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,310 @@
+{% extends "base.html" %}
+{% block title %}Aura Bloom · Social Media Marketing Agency{% endblock %}
+{% block content %}
+
+<header class="site-header">
+  <div class="nav-inner">
+    <a href="#top" class="logo">AURA BLOOM</a>
+    <button class="nav-toggle" aria-label="Menu">&#9776;</button>
+    <nav class="main-nav">
+      <a href="#about">{{ ui.nav_about }}</a>
+      <a href="#results">{{ ui.nav_results }}</a>
+      <a href="#case-studies">{{ ui.nav_case_studies }}</a>
+      <a href="#team">{{ ui.nav_team }}</a>
+      <a href="#how-we-work">{{ ui.nav_how }}</a>
+      <span class="lang-switch">
+        <a href="/lang/vi" class="{{ 'active' if lang == 'vi' }}">VI</a> /
+        <a href="/lang/en" class="{{ 'active' if lang == 'en' }}">EN</a>
+      </span>
+      <a href="#contact" class="btn primary">{{ ui.nav_contact }}</a>
+    </nav>
+  </div>
+</header>
+
+<div id="top" class="hero wrap">
+  <div class="hero-grid">
+    <div class="fade-in">
+      <h1>{{ ui.hero_title_pre }} <span class="accent">{{ ui.hero_title_accent }}</span></h1>
+      <p class="lead">{{ about_text }}</p>
+      <div class="cta-row">
+        <a href="#case-studies" class="btn primary">{{ ui.hero_cta_primary }}</a>
+        <a href="#contact" class="btn outline">{{ ui.hero_cta_secondary }}</a>
+      </div>
+      <div class="stat-strip">
+        <div class="stat"><b class="counter" data-target="75" data-prefix="$" data-suffix="K+">0</b><span>{{ ui.stat1_label }}</span></div>
+        <div class="stat"><b class="counter" data-target="786" data-suffix="K">0</b><span>{{ ui.stat2_label }}</span></div>
+        <div class="stat"><b class="counter" data-target="10" data-suffix="K+">0</b><span>{{ ui.stat3_label }}</span></div>
+      </div>
+    </div>
+    <div class="hero-visual fade-in">
+      <div class="ring r1"></div>
+      <div class="ring r2"></div>
+      <div class="ring r3"></div>
+      <div class="tag-word">AURA<br>BLOOM</div>
+    </div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap fade-in">
+    <div class="eyebrow">{{ ui.s01_eyebrow }}</div>
+    <h2 class="section-title">{{ ui.s01_title }}</h2>
+
+    <div class="feature-box">
+      <h3>{{ ui.feature_title }}</h3>
+      <div class="feature-icons">
+        <div class="ficon"><span class="glyph">&#9670;</span><p>{{ ui.feature_1 }}</p></div>
+        <div class="ficon"><span class="glyph">&#9670;</span><p>{{ ui.feature_2 }}</p></div>
+        <div class="ficon"><span class="glyph">&#9670;</span><p>{{ ui.feature_3 }}</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="results" class="bone">
+  <div class="wrap fade-in">
+    <div class="eyebrow">{{ ui.s02_eyebrow }}</div>
+    <h2 class="section-title">{{ ui.s02_title }}</h2>
+    <table class="stat-table">
+      <tr><th>{{ ui.th_project }}</th><th>{{ ui.th_metric }}</th><th>{{ ui.th_result }}</th></tr>
+      {% for r in results %}
+      <tr><td>{{ r.display_project }}</td><td>{{ r.display_metric }}</td><td class="num">{{ r.result }}</td></tr>
+      {% endfor %}
+    </table>
+  </div>
+</section>
+
+<section id="case-studies">
+  <div class="wrap">
+    <div class="fade-in">
+      <div class="eyebrow">{{ ui.s03_eyebrow }}</div>
+      <h2 class="section-title">{{ ui.s03_title }}</h2>
+      <p class="lead-text">{{ ui.s03_lead }}</p>
+    </div>
+
+    {% for category, items in grouped_cs.items() %}
+    <div class="cs-category fade-in">{{ category }}</div>
+    {% for cs in items %}
+    <div class="cs-card fade-in">
+      {% if cs.images %}
+        <div class="cs-num">Case Study {{ cs.number }}</div>
+        <h3>{{ cs.title }}</h3>
+        <div class="cs-sub">{{ cs.display_subtitle }}</div>
+
+        {% if cs.display_challenge %}
+        <div class="results-label">{{ ui.challenge_label }}</div>
+        <p style="font-size:0.95rem;">{{ cs.display_challenge }}</p>
+        {% endif %}
+
+        {% if cs.display_insight %}
+        <div class="results-label">{{ ui.insight_label }}</div>
+        <p style="font-size:0.95rem;">{{ cs.display_insight }}</p>
+        {% endif %}
+
+        <div class="results-label">{{ ui.scope_label }}</div>
+        <ul>
+          {% for line in cs.scope_list %}
+          <li>{{ line }}</li>
+          {% endfor %}
+        </ul>
+
+        {% if cs.metrics %}
+        <div class="results-label">{{ ui.results_label }}</div>
+        <div class="metric-row">
+          {% for m in cs.metrics %}
+          <div class="metric"><span class="val">{{ m.value }}</span><span class="label">{{ m.display_label }}</span></div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if cs.display_table %}
+        <div class="results-label">{{ ui.results_label }}</div>
+        <table class="mini-table">
+          <tr>{% for h in cs.display_table.headers %}<th>{{ h }}</th>{% endfor %}</tr>
+          {% for row in cs.display_table.rows %}
+          <tr>{% for cell in row %}<td>{{ cell }}</td>{% endfor %}</tr>
+          {% endfor %}
+        </table>
+        {% endif %}
+
+        {% if cs.display_results_note %}
+        <p style="color:var(--muted);font-style:italic;font-size:0.92rem;">{{ cs.display_results_note }}</p>
+        {% endif %}
+
+        <div class="gallery-scroll">
+          {% for img in cs.images %}
+          <div class="gallery-item">
+            <img src="{{ url_for('static', filename='images/' + img.image_url) }}" alt="{{ cs.title }}" loading="lazy">
+            {% if img.display_caption %}<div class="image-credit">{{ img.display_caption }}</div>{% endif %}
+          </div>
+          {% endfor %}
+        </div>
+
+        {% if cs.grouped_links %}
+        <div class="links-block">
+          <div class="results-label">{{ ui.links_label }}</div>
+          {% for group, links in cs.grouped_links.items() %}
+          <div class="link-group">
+            <span class="link-group-label">{{ group }}</span>
+            <div class="link-row">
+              {% for lk in links %}
+              <a href="{{ lk.url }}" target="_blank" rel="noopener" class="link-chip">{{ lk.icon }} {{ lk.label }}</a>
+              {% endfor %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+      {% else %}
+      <div class="cs-card-grid">
+        <div>
+          <div class="cs-num">Case Study {{ cs.number }}</div>
+          <h3>{{ cs.title }}</h3>
+          <div class="cs-sub">{{ cs.display_subtitle }}</div>
+          <div class="results-label">{{ ui.scope_label }}</div>
+          <ul>
+            {% for line in cs.scope_list %}
+            <li>{{ line }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% if cs.image_url %}
+        <div class="cs-image">
+          <img src="{{ url_for('static', filename='images/' + cs.image_url) }}" alt="{{ cs.title }}">
+          {% if cs.image_credit %}<div class="image-credit">{{ ui.image_credit_prefix }}: {{ cs.image_credit }}</div>{% endif %}
+        </div>
+        {% endif %}
+      </div>
+
+      {% if cs.metrics %}
+      <div class="results-label">{{ ui.results_label }}</div>
+      <div class="metric-row">
+        {% for m in cs.metrics %}
+        <div class="metric"><span class="val">{{ m.value }}</span><span class="label">{{ m.display_label }}</span></div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      {% if cs.display_results_note %}
+      <p style="color:var(--muted);font-style:italic;font-size:0.92rem;">{{ cs.display_results_note }}</p>
+      {% endif %}
+
+      {% for chart in cs.charts %}
+      <div class="chart-block">
+        <div class="chart-title">{{ chart.title }}{% if chart.unit %} ({{ chart.unit }}){% endif %}</div>
+        <canvas class="chart-canvas" data-chart='{{ chart | tojson }}'></canvas>
+      </div>
+      {% endfor %}
+      {% endif %}
+    </div>
+    {% endfor %}
+    {% endfor %}
+
+    <hr style="border:none;border-top:1px solid var(--tan);margin:30px 0;">
+    <h3 class="sub-title fade-in">{{ ui.other_projects_title }}</h3>
+    <div class="other-list fade-in">
+      {% for p in other_projects %}
+      <div class="other-item"><b>{{ p.name }}</b><span>{{ p.display_description }}</span></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="team" class="bone">
+  <div class="wrap fade-in">
+    <div class="eyebrow">{{ ui.s04_eyebrow }}</div>
+    <h2 class="section-title">{{ ui.s04_title }}</h2>
+    <div class="team-grid">
+      {% for t in team %}
+      <div class="team-card">
+        <div class="avatar">{{ t.initials }}</div>
+        <h3>{{ t.name }}</h3>
+        <div class="role">{{ t.display_role }}</div>
+        <p class="bio">{{ t.display_bio }}</p>
+        <a href="/team/{{ t.detail_slug }}" class="btn outline btn-sm">{{ ui.team_cta }}</a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="how-we-work">
+  <div class="wrap fade-in">
+    <div class="eyebrow">{{ ui.s05_eyebrow }}</div>
+    <h2 class="section-title">{{ ui.s05_title }}</h2>
+    <div class="steps">
+      {% for s in steps %}
+      <div class="step">
+        <div class="step-num">{{ s.number }}</div>
+        <div><h4>{{ s.display_title }}</h4><p>{{ s.display_description }}</p></div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="bone">
+  <div class="wrap fade-in">
+    <div class="eyebrow">{{ ui.s06_eyebrow }}</div>
+    <h2 class="section-title">{{ ui.s06_title }}</h2>
+    {% for sk in skills %}
+    <div class="skill-row">
+      <div class="skill-label">{{ sk.display_label }}</div>
+      <div class="skill-items">{{ sk.display_items }}</div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap fade-in">
+    <div class="eyebrow">{{ ui.s07_eyebrow }}</div>
+    <h2 class="section-title">{{ ui.s07_title }}</h2>
+    <p class="lead-text" style="font-style:italic;margin-bottom:30px;">{{ why_sub }}</p>
+    <div class="why-steps">
+      {% for w in why_reasons %}
+      <div class="why-step">
+        <div class="num-badge">{{ loop.index }}</div>
+        <div><h4>{{ w.display_title }}</h4><p>{{ w.display_description }}</p></div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="bone">
+  <div class="wrap fade-in">
+    <div class="cta-box">
+      <div>
+        <h3>{{ ui.contact_title }}</h3>
+        <p>{{ ui.contact_desc }}</p>
+        <div class="contact-line"><b>Email</b> {{ contact_email }}</div>
+        <div class="contact-line"><b>WhatsApp</b> {{ contact_whatsapp }}</div>
+      </div>
+      <form class="contact-form" action="/contact" method="POST">
+        <input type="text" name="name" placeholder="{{ ui.form_name }}" required>
+        <input type="email" name="email" placeholder="{{ ui.form_email }}" required>
+        <input type="text" name="company" placeholder="{{ ui.form_company }}">
+        <textarea name="message" rows="3" placeholder="{{ ui.form_message }}"></textarea>
+        <button type="submit">{{ ui.form_submit }}</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <div class="logo" style="color:var(--bone);">AURA BLOOM</div>
+      <div class="closing-line" style="margin-top:10px;">{{ closing_line }}</div>
+    </div>
+    <div>
+      <div class="contact-line"><b>Email</b> {{ contact_email }}</div>
+      <div class="contact-line"><b>WhatsApp</b> {{ contact_whatsapp }}</div>
+      <div class="contact-line"><a href="/admin/login" style="color:var(--tan);">{{ ui.admin_link }}</a></div>
+    </div>
+  </div>
+</footer>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Team · Admin{% endblock %}
+{% block content %}
+<div class="admin-wrap">
+  <div class="admin-nav">
+    <a href="/admin">Dashboard</a>
+    <a href="/admin/case-studies">Case Studies</a>
+    <a href="/admin/projects">Other Projects</a>
+    <a href="/admin/team">Team</a>
+    <a href="/admin/results">Results</a>
+    <a href="/admin/leads">Leads</a>
+  </div>
+  <div class="admin-card">
+    <h2 style="color:var(--cafe-noir);">Thêm thành viên</h2>
+    <form class="admin-form" method="POST">
+      <label>Tên</label><input type="text" name="name" required>
+      <label>Vai trò</label><input type="text" name="role" required>
+      <label>Bio ngắn</label><textarea name="bio" rows="2"></textarea>
+      <label>Email</label><input type="email" name="email">
+      <label>Điện thoại</label><input type="text" name="phone">
+      <label>Initials (VD: NV)</label><input type="text" name="initials">
+      <label>Slug trang chi tiết (VD: nhat-vy)</label><input type="text" name="detail_slug">
+      <label>Thứ tự</label><input type="number" name="order" value="0">
+      <button class="btn primary" type="submit" style="margin-top:18px;">Thêm</button>
+    </form>
+  </div>
+  <div class="admin-card">
+    <h2 style="color:var(--cafe-noir);">Danh sách</h2>
+    <table class="admin-table">
+      <tr><th>Tên</th><th>Vai trò</th><th></th></tr>
+      {% for t in items %}
+      <tr>
+        <td>{{ t.name }}</td><td>{{ t.role }}</td>
+        <td>
+          <form action="/admin/team/{{ t.id }}/delete" method="POST" onsubmit="return confirm('Xoá?');">
+            <button type="submit" style="border:none;background:none;color:#b85c4a;cursor:pointer;">Xoá</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+{% endblock %}

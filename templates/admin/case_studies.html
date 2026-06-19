@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Case Studies · Admin{% endblock %}
+{% block content %}
+<div class="admin-wrap">
+  <div class="admin-nav">
+    <a href="/admin">Dashboard</a>
+    <a href="/admin/case-studies">Case Studies</a>
+    <a href="/admin/projects">Other Projects</a>
+    <a href="/admin/team">Team</a>
+    <a href="/admin/results">Results</a>
+    <a href="/admin/leads">Leads</a>
+  </div>
+  <div class="admin-card">
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <h2 style="color:var(--cafe-noir);margin:0;">Case Studies</h2>
+      <a class="btn primary btn-sm" href="/admin/case-studies/new">+ Thêm mới</a>
+    </div>
+    <table class="admin-table" style="margin-top:18px;">
+      <tr><th>#</th><th>Category</th><th>Title</th><th></th></tr>
+      {% for i in items %}
+      <tr>
+        <td>{{ i.number }}</td>
+        <td>{{ i.category }}</td>
+        <td>{{ i.title }}</td>
+        <td>
+          <a href="/admin/case-studies/{{ i.id }}/edit">Sửa</a> ·
+          <form action="/admin/case-studies/{{ i.id }}/delete" method="POST" style="display:inline;" onsubmit="return confirm('Xoá case study này?');">
+            <button type="submit" style="border:none;background:none;color:#b85c4a;cursor:pointer;font-size:0.9rem;">Xoá</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+{% endblock %}

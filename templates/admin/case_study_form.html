@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}{{ "Sửa" if item else "Thêm" }} Case Study · Admin{% endblock %}
+{% block content %}
+<div class="admin-wrap">
+  <div class="admin-nav">
+    <a href="/admin">Dashboard</a>
+    <a href="/admin/case-studies">Case Studies</a>
+  </div>
+  <div class="admin-card">
+    <h2 style="color:var(--cafe-noir);">{{ "Sửa" if item else "Thêm" }} Case Study</h2>
+    <form class="admin-form" method="POST">
+      <label>Số thứ tự (VD: 01)</label>
+      <input type="text" name="number" value="{{ item.number if item else '' }}" required>
+      <label>Category</label>
+      <input type="text" name="category" value="{{ item.category if item else '' }}" placeholder="Doanh thu / Personal Brand / Content · Traffic · Concept" required>
+      <label>Title</label>
+      <input type="text" name="title" value="{{ item.title if item else '' }}" required>
+      <label>Subtitle</label>
+      <input type="text" name="subtitle" value="{{ item.subtitle if item else '' }}">
+      <label>Scope of work (mỗi dòng 1 bullet)</label>
+      <textarea name="scope_of_work" rows="5">{{ item.scope_of_work if item else '' }}</textarea>
+      <label>Results note (ghi chú định tính, optional)</label>
+      <textarea name="results_note" rows="2">{{ item.results_note if item else '' }}</textarea>
+      <label>Tên file ảnh (đặt trong static/images/, ví dụ: cs-ten-du-an.png)</label>
+      <input type="text" name="image_url" value="{{ item.image_url if item else '' }}">
+      <label>Nguồn ảnh (hiển thị dưới ảnh)</label>
+      <input type="text" name="image_credit" value="{{ item.image_credit if item else '' }}">
+      <label>Thứ tự hiển thị</label>
+      <input type="number" name="order" value="{{ item.order if item else 0 }}">
+      <button class="btn primary" type="submit" style="margin-top:18px;">Lưu</button>
+    </form>
+    <p style="font-size:0.82rem;color:var(--muted);margin-top:14px;">Lưu ý: metrics số liệu và chart hiện cần seed qua seed.py · form quản lý nhanh chỉ chỉnh nội dung text. Có thể mở rộng sau nếu cần.</p>
+  </div>
+</div>
+{% endblock %}

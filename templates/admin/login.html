@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Admin Login · Aura Bloom{% endblock %}
+{% block content %}
+<div class="admin-wrap" style="max-width:420px;">
+  <div class="admin-card">
+    <h2 style="color:var(--cafe-noir);">Aura Bloom Admin</h2>
+    <form class="admin-form" method="POST">
+      <label>Mật khẩu</label>
+      <input type="password" name="password" required autofocus>
+      <button class="btn primary" type="submit" style="margin-top:18px;width:100%;">Đăng nhập</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
