@@ -38,7 +38,7 @@ def run():
                 bio="Brand building từ số 0, storytelling, KOL/KOC management, HubSpot Certified.",
                 bio_en="Brand building from zero, storytelling, KOL/KOC management, HubSpot Certified.",
                 email="lanmai.110102@gmail.com", phone="0382 590 011",
-                initials="CL", detail_slug="chi-lan", order=3
+                initials="CL", detail_slug="chi-lan", photo_url="team/chi-lan.jpg", order=3
             ),
         ])
 
