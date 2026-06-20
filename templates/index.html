@@ -68,7 +68,7 @@
     <table class="stat-table">
       <tr><th>{{ ui.th_project }}</th><th>{{ ui.th_metric }}</th><th>{{ ui.th_result }}</th></tr>
       {% for r in results %}
-      <tr><td>{{ r.display_project }}</td><td>{{ r.display_metric }}</td><td class="num">{{ r.result }}</td></tr>
+      <tr><td>{{ r.display_project }}</td><td>{{ r.display_metric }}</td><td class="num">{{ r.display_result }}</td></tr>
       {% endfor %}
     </table>
   </div>
@@ -88,7 +88,7 @@
     <div class="cs-card fade-in">
       {% if cs.images %}
         <div class="cs-num">Case Study {{ cs.number }}</div>
-        <h3>{{ cs.title }}</h3>
+        <h3>{{ cs.display_title }}</h3>
         <div class="cs-sub">{{ cs.display_subtitle }}</div>
 
         {% if cs.display_challenge %}
@@ -160,7 +160,7 @@
       <div class="cs-card-grid">
         <div>
           <div class="cs-num">Case Study {{ cs.number }}</div>
-          <h3>{{ cs.title }}</h3>
+          <h3>{{ cs.display_title }}</h3>
           <div class="cs-sub">{{ cs.display_subtitle }}</div>
           <div class="results-label">{{ ui.scope_label }}</div>
           <ul>

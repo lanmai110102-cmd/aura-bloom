@@ -44,23 +44,23 @@ def run():
 
         # ---------- Results at a Glance ----------
         results = [
-            ("Doanh thu affiliate tạo ra", "Affiliate revenue generated", "$75.000", "Wellness Nest"),
-            ("Doanh thu cao nhất từ một creator", "Highest revenue from a single creator", "$18.600+ (peak tháng 12)", "Wellness Nest"),
-            ("Doanh thu chiến dịch theo mùa", "Seasonal campaign revenue", "~400 triệu VNĐ (gấp 3 lần)", "Suri's Concept"),
-            ("Doanh thu nền tháng ngoài cao điểm", "Baseline revenue in off-peak months", "~200 triệu VNĐ/tháng", "Suri's Concept"),
-            ("Lượt xem Instagram organic mỗi tháng", "Organic Instagram views per month", "786.100", "BABE Co. Agency IG"),
-            ("Tăng trưởng lượt xem IG theo tháng", "Month-on-month IG view growth", "+64,5%", "BABE Co. Agency IG"),
-            ("Lượt xem hashtag trong 30 ngày", "Hashtag views within 30 days", "12.000.000 (#theauravn)", "The Aura"),
-            ("Tăng trưởng doanh thu Shopee trong 1 tháng", "Shopee revenue growth in 1 month", "514,87%", "The Aura"),
-            ("Tăng trưởng email list (tháng 3 so với tháng 1)", "Email list growth (month 3 vs month 1)", "Tăng 329% trong 2 tháng", "VNCreatorpreneur"),
-            ("Cộng đồng creator xây dựng được", "Creator community built", "10.000+ thành viên", "The BABE Playground"),
-            ("Kênh Instagram đạt 10K+ followers mỗi kênh", "Instagram channels with 10K+ followers each", "30+", "BABE Co. US Market"),
-            ("Doanh thu tháng ra mắt F&B", "Launch month revenue (F&B)", "~100 triệu+ VNĐ", "Cháo Vịt Liên"),
-            ("Lượt xem nội dung bất động sản", "Real estate content views", "Lên đến 545.000/video", "Nhà Phố Giá Thật"),
-            ("Tăng trưởng follower TikTok trong 4 tháng", "TikTok follower growth in 4 months", "2.400", "Nhà Phố Giá Thật"),
+            ("Doanh thu affiliate tạo ra", "Affiliate revenue generated", "$75.000", "$75,000", "Wellness Nest"),
+            ("Doanh thu cao nhất từ một creator", "Highest revenue from a single creator", "$18.600+ (peak tháng 12)", "$18,600+ (Dec peak)", "Wellness Nest"),
+            ("Doanh thu chiến dịch theo mùa", "Seasonal campaign revenue", "~400 triệu VNĐ (gấp 3 lần)", "~400M VND (3x record)", "Suri's Concept"),
+            ("Doanh thu nền tháng ngoài cao điểm", "Baseline revenue in off-peak months", "~200 triệu VNĐ/tháng", "~200M VND/month", "Suri's Concept"),
+            ("Lượt xem Instagram organic mỗi tháng", "Organic Instagram views per month", "786.100", "786,100", "BABE Co. Agency IG"),
+            ("Tăng trưởng lượt xem IG theo tháng", "Month-on-month IG view growth", "+64,5%", "+64.5%", "BABE Co. Agency IG"),
+            ("Lượt xem hashtag trong 30 ngày", "Hashtag views within 30 days", "12.000.000 (#theauravn)", "12,000,000 (#theauravn)", "The Aura"),
+            ("Tăng trưởng doanh thu Shopee trong 1 tháng", "Shopee revenue growth in 1 month", "514,87%", "514.87%", "The Aura"),
+            ("Tăng trưởng email list (tháng 3 so với tháng 1)", "Email list growth (month 3 vs month 1)", "Tăng 329% trong 2 tháng", "+329% in 2 months", "VNCreatorpreneur"),
+            ("Cộng đồng creator xây dựng được", "Creator community built", "10.000+ thành viên", "10,000+ members", "The BABE Playground"),
+            ("Kênh Instagram đạt 10K+ followers mỗi kênh", "Instagram channels with 10K+ followers each", "30+", "30+", "BABE Co. US Market"),
+            ("Doanh thu tháng ra mắt F&B", "Launch month revenue (F&B)", "~100 triệu+ VNĐ", "~100M+ VND", "Cháo Vịt Liên"),
+            ("Lượt xem nội dung bất động sản", "Real estate content views", "Lên đến 545.000/video", "Up to 545,000/video", "Nhà Phố Giá Thật"),
+            ("Tăng trưởng follower TikTok trong 4 tháng", "TikTok follower growth in 4 months", "2.400", "2,400", "Nhà Phố Giá Thật"),
         ]
-        for i, (m, m_en, r, p) in enumerate(results):
-            db.session.add(ResultMetric(metric=m, metric_en=m_en, result=r, project=p, order=i))
+        for i, (m, m_en, r, r_en, p) in enumerate(results):
+            db.session.add(ResultMetric(metric=m, metric_en=m_en, result=r, result_en=r_en, project=p, order=i))
 
         # ---------- Case Studies ----------
         cs1 = CaseStudy(
@@ -297,6 +297,7 @@ def run():
         cs6 = CaseStudy(
             number="06", category="Content · Traffic · Concept", category_en="Content · Traffic · Concept",
             title="BABE Co. Tăng trưởng kênh Instagram",
+            title_en="BABE Co. Agency Instagram Growth",
             subtitle="Marketing Agency · Organic Instagram Growth · Đối tượng B2B",
             subtitle_en="Marketing Agency · Organic Instagram Growth · B2B Audience",
             challenge="BABE Co. cần kênh Instagram riêng để thu hút khách hàng B2B và chứng minh năng lực marketing thực chiến. "

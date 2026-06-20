@@ -142,6 +142,7 @@ def home():
     for cs in case_studies:
         scope_raw = cs.scope_of_work_en if (lang == "en" and cs.scope_of_work_en) else cs.scope_of_work
         cs.scope_list = [x for x in (scope_raw or "").split("\n") if x.strip()]
+        cs.display_title = cs.title_en if (lang == "en" and cs.title_en) else cs.title
         cs.display_subtitle = cs.subtitle_en if (lang == "en" and cs.subtitle_en) else cs.subtitle
         cs.display_category = cs.category_en if (lang == "en" and cs.category_en) else cs.category
         cs.display_challenge = cs.challenge_en if (lang == "en" and cs.challenge_en) else cs.challenge
@@ -192,6 +193,7 @@ def home():
 
     for r in results:
         r.display_metric = r.metric_en if (lang == "en" and r.metric_en) else r.metric
+        r.display_result = r.result_en if (lang == "en" and r.result_en) else r.result
         r.display_project = r.project
 
     for t in team:

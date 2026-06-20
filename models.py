@@ -25,6 +25,7 @@ class ResultMetric(db.Model):
     metric = db.Column(db.String(200), nullable=False)
     metric_en = db.Column(db.String(200), default="")
     result = db.Column(db.String(120), nullable=False)
+    result_en = db.Column(db.String(120), default="")
     project = db.Column(db.String(120), nullable=False)
     order = db.Column(db.Integer, default=0)
 
@@ -35,6 +36,7 @@ class CaseStudy(db.Model):
     category = db.Column(db.String(80), nullable=False)
     category_en = db.Column(db.String(80), default="")
     title = db.Column(db.String(160), nullable=False)
+    title_en = db.Column(db.String(160), default="")
     subtitle = db.Column(db.String(220), default="")
     subtitle_en = db.Column(db.String(220), default="")
     challenge = db.Column(db.Text, default="")          # optional "Thách thức" intro
