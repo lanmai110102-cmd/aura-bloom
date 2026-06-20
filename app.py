@@ -104,7 +104,7 @@ UI_TEXT = {
 
 
 def current_lang():
-    return session.get("lang", "vi")
+    return session.get("lang", "en")
 
 
 @app.context_processor
