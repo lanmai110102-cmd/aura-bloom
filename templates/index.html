@@ -218,7 +218,11 @@
     <div class="team-grid">
       {% for t in team %}
       <div class="team-card">
+        {% if t.photo_url %}
+        <img class="avatar avatar-photo" src="{{ url_for('static', filename='images/' + t.photo_url) }}" alt="{{ t.name }}">
+        {% else %}
         <div class="avatar">{{ t.initials }}</div>
+        {% endif %}
         <h3>{{ t.name }}</h3>
         <div class="role">{{ t.display_role }}</div>
         <p class="bio">{{ t.display_bio }}</p>

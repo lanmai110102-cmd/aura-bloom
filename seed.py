@@ -20,7 +20,7 @@ def run():
                 bio="Chiến lược nội dung đa kênh, personal branding cho executives, kinh nghiệm thị trường Mỹ, Anh, Úc, Đức, Pháp.",
                 bio_en="Multi-channel content strategy, personal branding for executives, hands-on experience in the US, UK, Australia, Germany, and France.",
                 email="nhatvyng.forwork@gmail.com", phone="0942 468 708",
-                initials="NV", detail_slug="nhat-vy", order=1
+                initials="NV", detail_slug="nhat-vy", photo_url="team/nhat-vy.jpg", order=1
             ),
             TeamMember(
                 name="Thanh Trúc (Chloe Nguyen)",

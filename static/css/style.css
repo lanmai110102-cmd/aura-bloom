@@ -263,6 +263,10 @@ p.lead-text { color: var(--muted); max-width: 720px; font-size: 1.02rem; }
   background: var(--moss); color: var(--white); font-weight: 800; font-size: 1.3rem;
   display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;
 }
+.avatar-photo {
+  object-fit: cover; display: block; border: 3px solid var(--white);
+  box-shadow: 0 4px 14px rgba(76,61,25,0.18);
+}
 .team-card h3 { margin: 0 0 4px; font-size: 1.1rem; color: var(--cafe-noir); }
 .team-card .role { color: var(--moss); font-weight: 700; font-size: 0.85rem; margin-bottom: 10px; }
 .team-card p.bio { color: var(--muted); font-size: 0.88rem; margin-bottom: 18px; }
