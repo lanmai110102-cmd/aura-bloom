@@ -29,7 +29,7 @@ def run():
                 bio="Marketing planning, seasonal campaigns, KOL/KOC coordination, vận hành cộng đồng creator 10.000+ thành viên.",
                 bio_en="Marketing planning, seasonal campaigns, KOL/KOC coordination, operating a creator community of 10,000+ members.",
                 email="thanhtrucnguyen0106@gmail.com", phone="0365 334 549",
-                initials="TT", detail_slug="thanh-truc", order=2
+                initials="TT", detail_slug="thanh-truc", photo_url="team/thanh-truc.jpg", order=2
             ),
             TeamMember(
                 name="Mai Nguyễn Chi Lan",
